@@ -1,29 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_puthex.c                                        :+:      :+:    :+:   */
+/*   read_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: albelaiz <albelaiz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/20 19:44:32 by albelaiz          #+#    #+#             */
-/*   Updated: 2024/11/22 16:16:22 by albelaiz         ###   ########.fr       */
+/*   Created: 2025/01/27 12:14:33 by albelaiz          #+#    #+#             */
+/*   Updated: 2025/02/05 16:50:59 by albelaiz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "so_long.h"
 
-int	ft_puthex(unsigned int n, int uppr)
+void read_map(t_game *game)
 {
-	int		i;
-	char	*hex;
-
-	i = 0;
-	if (uppr)
-		hex = "0123456789ABCDEF";
-	else
-		hex = "0123456789abcdef";
-	if (n >= 16)
-		i += ft_puthex(n / 16, uppr);
-	i += ft_putchar(hex[n % 16]);
-	return (i);
-}
+	int i = 0;
+	int map_size = 100;
+	game->map = malloc(map_size * sizeof(char *));
+	if (!game->map)
+	{
+		write(1, "Error: Memory allocation failed\n", 32);
+		exit(1);
+	}
+	game->map[i] = get_next_line(game->fd);
+	while(game->map[i])
+	{
+		i++;
+		game->map[i] = get_next_line(game->fd);
+		if (game->map[i] == NULL)
+		break;
+	}
+	game->n = i - 1;
+} 

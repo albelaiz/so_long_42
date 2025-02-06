@@ -1,19 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putchar.c                                       :+:      :+:    :+:   */
+/*   ft_strlen1.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: albelaiz <albelaiz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/20 19:42:16 by albelaiz          #+#    #+#             */
-/*   Updated: 2024/11/23 13:04:18 by albelaiz         ###   ########.fr       */
+/*   Created: 2025/02/06 12:45:09 by albelaiz          #+#    #+#             */
+/*   Updated: 2025/02/06 12:45:11 by albelaiz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "so_long.h"
 
-int	ft_putchar(char c)
+int ft_strlen1(char *str)
 {
-	write(1, &c, 1);
-	return (1);
+    int len = 0;
+    while (str[len])
+        len++;
+    return len;
 }
