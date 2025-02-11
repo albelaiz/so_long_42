@@ -6,7 +6,7 @@
 /*   By: albelaiz <albelaiz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 12:27:02 by albelaiz          #+#    #+#             */
-/*   Updated: 2025/02/06 12:32:06 by albelaiz         ###   ########.fr       */
+/*   Updated: 2025/02/11 14:52:18 by albelaiz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,41 +101,49 @@ int checker_map_shape(t_game *game)
 // 	else
 // 		write(1,"map is rectangular\n",19);
 // }
-void checker_characters(t_game *game)
+void checker_characters(t_game **game)
 {
 	int i;
 	int j;
 	int n;
 	
 	i = 0;
-	while (game->map[i] != NULL)
+	while ((*game)->map[i] != NULL)
 	{
 		j = 0;
 
-		while (game->map[i][j] != '\0' && game->map[i][j] != '\n')
+		while ((*game)->map[i][j] != '\0' && (*game)->map[i][j] != '\n')
 		{
-			n = checker_all(game->map[i][j]);
-		if (n == 0) 
-		{
-            write(1, "Error: Invalid character\n", 25);
-			exit(1);
-		}
+			n = checker_all((*game)->map[i][j], game);
+			if (n == 0) 
+			{
+				write(1, "Error: Invalid character\n", 25);
+				exit(1);
+			}
 		j++;
 		}
 		i++;
 	}
 	write(1, "The map has all valid characters\n", 33);
 }
-int checker_all(char c)
+
+int checker_all(char c, t_game **game)
 {
 	if (c == '1' || c == '0' || c == 'P' || c == 'C' || c == 'E')
-	
+	{
+		if (c == 'P')
+			(*game)->c_player++;
+		if (c == 'C')
+			(*game)->c_collectible++;
+		if (c == 'E')
+			(*game)->c_exit++;
 		return (1);
+	}
 	return (0);
 }
 void checker_map(t_game *game)
 {
-	checker_characters(game);
+	checker_characters(&game);
 	checker_wall(game);
 	checker_map_shape(game);
 }

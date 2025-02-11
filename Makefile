@@ -10,6 +10,8 @@ SRC = checker_map.c\
 	  read_map.c\
 	  ft_strlen1.c\
 	  put_imag.c\
+	  link.c\
+	  key.c\
 
 OBJ = $(SRC:.c=.o)
 LIB = so_long.a
