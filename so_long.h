@@ -6,7 +6,7 @@
 /*   By: albelaiz <albelaiz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 12:14:07 by albelaiz          #+#    #+#             */
-/*   Updated: 2025/02/11 18:51:51 by albelaiz         ###   ########.fr       */
+/*   Updated: 2025/02/24 10:38:25 by albelaiz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,10 @@
 //#include "minilibx_opengl/mlx.h"
 #include <unistd.h>
 #include <stdio.h>
+#include <stdlib.h>
 #include <fcntl.h>
 #include "minilibx/mlx.h"
-// #include <mlx.h>
-#include "get_next_line.h"
+#include "get_next_line/get_next_line.h"
 
 typedef struct s_game
 {
@@ -44,17 +44,20 @@ typedef struct s_game
 }		t_game;
 
 void img(t_game *game);
-void ft_link(t_game *game);
-int checker_all(char c, t_game **game);
-int key(int key, t_game **game);
 int	ft_strlen1(char *str);
-void read_map(t_game *game);
-void checker_map(t_game *game);
-void checker_wall(t_game *game);
-int checker_map_shape(t_game *game);
-void checker_characters(t_game **game);
 void key_w(t_game **game);
 void key_s(t_game **game);
 void key_a(t_game **game);
 void key_d(t_game **game);
+void ptr_to_img(t_game *game);
+void ft_link(t_game *game);
+void read_map(t_game *game);
+char **duplicte(t_game *game);
+void checker_map(t_game *game);
+int key(int key, t_game **game);
+void checker_wall(t_game *game);
+int checker_map_shape(t_game *game);
+void checker_characters(t_game **game);
+int checker_all(char c, t_game **game);
+int flood_fill(char **map,int x, int y,int collectible);
 #endif

@@ -6,7 +6,7 @@
 /*   By: albelaiz <albelaiz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 12:27:02 by albelaiz          #+#    #+#             */
-/*   Updated: 2025/02/11 14:52:18 by albelaiz         ###   ########.fr       */
+/*   Updated: 2025/02/24 14:58:28 by albelaiz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,41 +66,8 @@ int checker_map_shape(t_game *game)
             return (0); // Map is not rectangular
         i++;
     }
-    return (1); // Placeholder, replace with actual validation logic
+    return (1);
 }
-// void cheker_map_shape(t_game *game)
-// {
-// 	int x;
-// 	int y;
-// 	int j;
-
-// 	x = 1;
-// 	y = 0;
-// 	int j = 0;
-// 	if (!game->map || game->n < 1)
-// 	{
-// 		write(1,"Error: Invalid map\n", 19);
-// 		exit(1);
-// 	}
-// 	while (game->map[0][y] != '\n' && game->map[0][y] != '\0')
-// 		y++;
-// 	while (x <= game->n)
-// 	{
-// 		j = 0;
-// 		while (game->map[x][j] != '\n' && game->map[x][j] != '\0')
-// 			j++;
-// 		if (j != y)
-// 		{
-// 			write(1,"EROOR: map not rectangular",30);
-// 			exit(1);
-// 		}
-// 		x++;
-// 	}
-// 	if (y == game->n + 1)
-// 		write(1,"map is square\n",14);
-// 	else
-// 		write(1,"map is rectangular\n",19);
-// }
 void checker_characters(t_game **game)
 {
 	int i;
@@ -129,6 +96,7 @@ void checker_characters(t_game **game)
 
 int checker_all(char c, t_game **game)
 {
+	
 	if (c == '1' || c == '0' || c == 'P' || c == 'C' || c == 'E')
 	{
 		if (c == 'P')

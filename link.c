@@ -6,7 +6,7 @@
 /*   By: albelaiz <albelaiz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/07 10:09:14 by albelaiz          #+#    #+#             */
-/*   Updated: 2025/02/11 14:52:49 by albelaiz         ###   ########.fr       */
+/*   Updated: 2025/02/24 20:38:14 by albelaiz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void ft_link(t_game *game)
 {
-	int i =0;
+	int i = 0;
 	int j;
 	int x = 0;
 	int y = 0;
@@ -46,4 +46,5 @@ void ft_link(t_game *game)
 		x = 0;
 		y += 64;
 	}
+			printf("%d %d\n",game->char_x,game->char_y);
 }
