@@ -1,21 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen1.c                                       :+:      :+:    :+:   */
+/*   ft_unbr.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: albelaiz <albelaiz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/06 12:45:09 by albelaiz          #+#    #+#             */
-/*   Updated: 2025/02/26 15:15:21 by albelaiz         ###   ########.fr       */
+/*   Created: 2024/11/20 17:30:59 by albelaiz          #+#    #+#             */
+/*   Updated: 2024/11/23 13:08:10 by albelaiz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "ft_printf.h"
 
-int	ft_strlen1(char *str)
+int	ft_unbr(unsigned int nb)
 {
-	int len = 0;
-	while (str[len])
-		len++;
-	return (len);
+	char	c;
+	int		cont;
+
+	cont = 0;
+	if (nb >= 10)
+	{
+		cont += ft_unbr(nb / 10);
+	}
+	c = nb % 10 + 48;
+	cont += ft_putchar(c);
+	return (cont);
 }

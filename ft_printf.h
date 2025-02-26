@@ -1,21 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen1.c                                       :+:      :+:    :+:   */
+/*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: albelaiz <albelaiz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/06 12:45:09 by albelaiz          #+#    #+#             */
-/*   Updated: 2025/02/26 15:15:21 by albelaiz         ###   ########.fr       */
+/*   Created: 2024/11/18 12:30:52 by albelaiz          #+#    #+#             */
+/*   Updated: 2025/02/26 20:30:32 by albelaiz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#ifndef FT_PRINTF_H
+# define FT_PRINTF_H
 
-int	ft_strlen1(char *str)
-{
-	int len = 0;
-	while (str[len])
-		len++;
-	return (len);
-}
+# include <stdarg.h>
+# include <unistd.h>
+int	ft_putnbr(int nb);
+int	ft_putchar(char c);
+int	ft_putstr(char *str);
+int	ft_strlen(char *str);
+int	ft_unbr(unsigned int nb);
+int	ft_printf(const char *forma, ...);
+int	ft_puthex(unsigned int n, int uppr);
+int	ft_putaddres(unsigned long n, int uppr);
+
+#endif

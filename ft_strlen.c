@@ -1,21 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen1.c                                       :+:      :+:    :+:   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: albelaiz <albelaiz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/06 12:45:09 by albelaiz          #+#    #+#             */
-/*   Updated: 2025/02/26 15:15:21 by albelaiz         ###   ########.fr       */
+/*   Created: 2024/11/19 15:59:29 by albelaiz          #+#    #+#             */
+/*   Updated: 2025/02/26 20:27:52 by albelaiz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "ft_printf.h"
 
-int	ft_strlen1(char *str)
+int	ft_strlen(char *str)
 {
-	int len = 0;
-	while (str[len])
-		len++;
-	return (len);
+	int	i;
+
+	i = 0;
+	while (str[i])
+		i++;
+	return (i);
 }

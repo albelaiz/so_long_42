@@ -1,21 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen1.c                                       :+:      :+:    :+:   */
+/*   ft_putaddres.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: albelaiz <albelaiz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/06 12:45:09 by albelaiz          #+#    #+#             */
-/*   Updated: 2025/02/26 15:15:21 by albelaiz         ###   ########.fr       */
+/*   Created: 2024/11/23 12:24:21 by albelaiz          #+#    #+#             */
+/*   Updated: 2024/11/25 16:15:01 by albelaiz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "ft_printf.h"
 
-int	ft_strlen1(char *str)
+int	ft_putaddres(unsigned long n, int uppr)
 {
-	int len = 0;
-	while (str[len])
-		len++;
-	return (len);
+	int		i;
+	char	*hex;
+
+	i = 0;
+	hex = "0123456789abcdef";
+	if (n >= 16)
+		i += ft_putaddres(n / 16, uppr);
+	i += ft_putchar(hex[n % 16]);
+	return (i);
 }
