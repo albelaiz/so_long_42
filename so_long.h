@@ -6,7 +6,7 @@
 /*   By: albelaiz <albelaiz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 12:14:07 by albelaiz          #+#    #+#             */
-/*   Updated: 2025/02/27 12:03:25 by albelaiz         ###   ########.fr       */
+/*   Updated: 2025/02/27 17:48:38 by albelaiz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ typedef struct s_game
 }			t_game;
 
 void		img(t_game *game);
+void		func_img(t_game *game);
 int			ft_strlen2(char *str);
 void		key_w(t_game **game);
 void		key_s(t_game **game);
@@ -62,5 +63,7 @@ int			checker_wall(t_game *game);
 // int			checker_map_shape(t_game *game);
 int			checker_characters(t_game **game);
 int			checker_all(char c, t_game **game);
+void		chekchek(t_game *game, char *line, int x, int y);
 int			flood_fill(char **map, int x, int y, int collectible);
+void	ft_norm_link(t_game *game, int i, int j, int x, int y);
 #endif

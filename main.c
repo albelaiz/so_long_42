@@ -6,7 +6,7 @@
 /*   By: albelaiz <albelaiz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 12:29:34 by albelaiz          #+#    #+#             */
-/*   Updated: 2025/02/27 13:39:58 by albelaiz         ###   ########.fr       */
+/*   Updated: 2025/02/27 17:45:13 by albelaiz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,12 @@ void	ptr_to_img(t_game *game)
 	game->exit = mlx_xpm_file_to_image(game->mlx, "img/exit.xpm", &game->x,
 			&game->y);
 }
+void func_img(t_game *game)
+{
+	ptr_to_img(game);
+		img(game);
+		ft_link(game);
+}
 int	main(int argc, char **argv)
 {
 	char	**new_map;
@@ -48,10 +54,10 @@ int	main(int argc, char **argv)
 		read_map(game);
 		checker_map(game);
 		new_map = duplicate_map(game);
-		flood_fill(new_map,game->player_x,game->player_y,game->c_collectible);
-		ptr_to_img(game);
-		img(game);
-		ft_link(game);
+		if (flood_fill(new_map, game->player_x, game->player_y,
+				game->c_collectible) == 0)
+			exit(0);
+		func_img(game);
 		mlx_key_hook(game->mlx_win, key, &game);
 		mlx_loop(game->mlx);
 	}

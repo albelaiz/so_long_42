@@ -20,6 +20,7 @@ SRC = checker_map.c\
       link.c\
       key.c\
       flood_fill.c\
+      chekchek.c\
 
 OBJ = $(SRC:.c=.o)
 
