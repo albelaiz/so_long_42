@@ -6,7 +6,7 @@
 /*   By: albelaiz <albelaiz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/19 15:46:27 by albelaiz          #+#    #+#             */
-/*   Updated: 2025/02/26 16:10:41 by albelaiz         ###   ########.fr       */
+/*   Updated: 2025/02/27 13:40:24 by albelaiz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ int	flood_fill(char **map, int x, int y, int collectible)
 	toul = 0;
 	while (map[toul])
 		toul++;
-	if (x < 0 || y < 0 || x > ft_strlen1(map[0]) - 1 || y > toul
+	if (x < 0 || y < 0 || x > ft_strlen2(map[0]) - 1 || y > toul
 		|| map[y][x] == '1')
 		return (0);
 	if (map[y][x] == 'C')

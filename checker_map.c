@@ -6,7 +6,7 @@
 /*   By: albelaiz <albelaiz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 12:27:02 by albelaiz          #+#    #+#             */
-/*   Updated: 2025/02/26 20:27:11 by albelaiz         ###   ########.fr       */
+/*   Updated: 2025/02/27 12:00:40 by albelaiz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,14 +102,14 @@ int	checker_all(char c, t_game **game)
 void	checker_map(t_game *game)
 {
 	int i = 0;
-	if (game->n == ft_strlen1(game->map[0]))
+	if (game->n == ft_strlen2(game->map[0]))
 		ft_printf("Error: the map is not rectangular\n", i++);
 	if (checker_characters(&game))
 		ft_printf("Error: Invalid character\n",i++);
 	if (checker_wall(game))
 		ft_printf("Error: Invalid wall\n",i++);
-	if (checker_map_shape(game))
-		ft_printf("Error: Invalid map shape\n",i++);
+	// if (checker_map_shape(game))
+	// 	ft_printf("Error: Invalid map shape\n",i++);
 	if (i)
 		exit(1);
 }

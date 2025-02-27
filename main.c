@@ -6,7 +6,7 @@
 /*   By: albelaiz <albelaiz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 12:29:34 by albelaiz          #+#    #+#             */
-/*   Updated: 2025/02/26 19:46:42 by albelaiz         ###   ########.fr       */
+/*   Updated: 2025/02/27 13:39:58 by albelaiz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	ptr_to_img(t_game *game)
 {
 	game->mlx = mlx_init();
-	game->mlx_win = mlx_new_window(game->mlx, (ft_strlen1(game->map[0]) - 1)
+	game->mlx_win = mlx_new_window(game->mlx, (ft_strlen2(game->map[0]) - 1)
 			* 64, (game->n + 1) * 64, "so_long");
 	game->floor = mlx_xpm_file_to_image(game->mlx, "img/floor.xpm", &game->x,
 			&game->y);
@@ -47,10 +47,8 @@ int	main(int argc, char **argv)
 		game->c_player = 0;
 		read_map(game);
 		checker_map(game);
-		printf("%d %d\n", game->player_x, game->player_y);
 		new_map = duplicate_map(game);
-		printf("%d %d\n",game->x,game->y);
-		printf("%d\n%d\n",game->c_collectible,flood_fill(new_map,game->player_x,game->player_y,game->c_collectible));
+		flood_fill(new_map,game->player_x,game->player_y,game->c_collectible);
 		ptr_to_img(game);
 		img(game);
 		ft_link(game);
