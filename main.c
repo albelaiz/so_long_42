@@ -6,7 +6,7 @@
 /*   By: albelaiz <albelaiz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 12:29:34 by albelaiz          #+#    #+#             */
-/*   Updated: 2025/02/27 17:45:13 by albelaiz         ###   ########.fr       */
+/*   Updated: 2025/03/06 14:56:18 by albelaiz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,7 @@
 void	ptr_to_img(t_game *game)
 {
 	game->mlx = mlx_init();
-	game->mlx_win = mlx_new_window(game->mlx, (ft_strlen2(game->map[0]) - 1)
-			* 64, (game->n + 1) * 64, "so_long");
+	game->mlx_win = mlx_new_window(game->mlx,game->width,game->height, "so_long");
 	game->floor = mlx_xpm_file_to_image(game->mlx, "img/floor.xpm", &game->x,
 			&game->y);
 	game->wall = mlx_xpm_file_to_image(game->mlx, "img/tree.xpm", &game->x,
@@ -30,18 +29,28 @@ void	ptr_to_img(t_game *game)
 }
 void func_img(t_game *game)
 {
+	game->width = (ft_strlen2(game->map[0]) - 1) * 64;
+    game->height = (game->n + 1) * 64;
+	printf("width = %d\n", game->width);
+	printf("height = %d\n", game->height);
 	ptr_to_img(game);
-		img(game);
-		ft_link(game);
+	img(game);
+	ft_link(game);
 }
 int	main(int argc, char **argv)
 {
 	char	**new_map;
 	t_game	*game;
-
+	
 	if (argc == 2)
 	{
 		game = malloc(sizeof(t_game));
+		if (!game)
+		{
+   			write(1, "Memory allocation failed\n", 24);
+			return (1);
+		}
+		ft_memset(game, 0, sizeof(t_game));
 		game->fd = open(argv[1], O_RDONLY);
 		if (game->fd < 0)
 		{
@@ -57,6 +66,7 @@ int	main(int argc, char **argv)
 		if (flood_fill(new_map, game->player_x, game->player_y,
 				game->c_collectible) == 0)
 			exit(0);
+		game->mlx = mlx_init();
 		func_img(game);
 		mlx_key_hook(game->mlx_win, key, &game);
 		mlx_loop(game->mlx);

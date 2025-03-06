@@ -21,6 +21,8 @@ SRC = checker_map.c\
       key.c\
       flood_fill.c\
       chekchek.c\
+      ft_memset.c\
+      close_all.c\
 
 OBJ = $(SRC:.c=.o)
 

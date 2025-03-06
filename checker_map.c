@@ -6,7 +6,7 @@
 /*   By: albelaiz <albelaiz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 12:27:02 by albelaiz          #+#    #+#             */
-/*   Updated: 2025/02/27 12:00:40 by albelaiz         ###   ########.fr       */
+/*   Updated: 2025/03/06 15:00:05 by albelaiz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,33 +37,15 @@ int	checker_wall(t_game *game)
 	return(0);
 }
 
-// int	checker_map_shape(t_game *game)
-// {
-// 	int	i;
-// 	int	len;
-
-// 	// Implement your map validation logic here
-// 	// Return 1 if the map is valid, 0 otherwise
-// 	// For example, check if the map is rectangular, has valid characters, etc.
-// 	i = 0;
-// 	len = 0;
-// 	while (game->map[i])
-// 	{
-// 		if (i == 0)
-// 			len = ft_strlen1(game->map[i]);
-// 		else if (ft_strlen1(game->map[i]) != len)
-// 			return (0); // Map is not rectangular
-// 		i++;
-// 	}
-// 	return (1);
-// }
 int	checker_characters(t_game **game)
 {
 	int	i;
 	int	j;
 	int	n;
+	int k;
 
 	i = 0;
+	k = 0;
 	while ((*game)->map[i] != NULL)
 	{
 		j = 0;
@@ -72,10 +54,11 @@ int	checker_characters(t_game **game)
 			n = checker_all((*game)->map[i][j], game);
 			if ((*game)->map[i][j] == 'P')
 			{
+				k++;
 				(*game)->player_x = j;
 				(*game)->player_y = i;
 			}
-			if (n == 0)
+			else if (n == 0 && k > 1)
 				return (write(1, "Error: Invalid character\n", 25), 1);
 			j++;
 		}
@@ -86,10 +69,12 @@ int	checker_characters(t_game **game)
 
 int	checker_all(char c, t_game **game)
 {
-	if (c == '1' || c == '0' || c == 'P' || c == 'C' || c == 'E')
+	if (c == 'P' || c == 'C' || c == 'E')
 	{
 		if (c == 'P')
 			(*game)->c_player++;
+		if ((*game)->c_player > 1)
+			return (0);
 		if (c == 'C')
 			(*game)->c_collectible++;
 		if (c == 'E')
@@ -108,8 +93,6 @@ void	checker_map(t_game *game)
 		ft_printf("Error: Invalid character\n",i++);
 	if (checker_wall(game))
 		ft_printf("Error: Invalid wall\n",i++);
-	// if (checker_map_shape(game))
-	// 	ft_printf("Error: Invalid map shape\n",i++);
 	if (i)
 		exit(1);
 }

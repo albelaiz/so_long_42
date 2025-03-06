@@ -1,38 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   put_imag.c                                         :+:      :+:    :+:   */
+/*   close_all.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: albelaiz <albelaiz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/06 12:44:38 by albelaiz          #+#    #+#             */
-/*   Updated: 2025/03/06 14:52:41 by albelaiz         ###   ########.fr       */
+/*   Created: 2025/03/05 23:11:18 by albelaiz          #+#    #+#             */
+/*   Updated: 2025/03/05 23:16:22 by albelaiz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	img(t_game *game)
+int close_all(void *param)
 {
-	int	i;
-	int	j;
-	int	x;
-	int	y;
-
-	i = 0;
-	x = 0;
-	y = 0;
-	while (game->map[i] != NULL)
-	{
-		j = 0;
-		while (game->map[i][j] != '\0')
-		{
-			mlx_put_image_to_window(game->mlx, game->mlx_win, game->floor, x,y);
-			x += 64;
-			j++;
-		}
-		x = 0;
-		y += 64;
-		i++;
-	}
+    t_game *game = (t_game *)param;
+    // Cleanup code here
+    mlx_destroy_window(game->mlx, game->mlx_win);
+    exit(0);
+    return (0);
 }
