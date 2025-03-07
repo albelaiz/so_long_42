@@ -6,7 +6,7 @@
 /*   By: albelaiz <albelaiz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 12:29:34 by albelaiz          #+#    #+#             */
-/*   Updated: 2025/03/06 14:56:18 by albelaiz         ###   ########.fr       */
+/*   Updated: 2025/03/07 00:54:43 by albelaiz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,14 +57,11 @@ int	main(int argc, char **argv)
 			write(1, "error open file", 15);
 			return (1);
 		}
-		game->c_collectible = 0;
-		game->c_exit = 0;
-		game->c_player = 0;
 		read_map(game);
 		checker_map(game);
 		new_map = duplicate_map(game);
-		if (flood_fill(new_map, game->player_x, game->player_y,
-				game->c_collectible) == 0)
+		printf("x = %d y = %d\n", game->player_x, game->player_y);
+		if (flood_fill(new_map, game->player_x, game->player_y,game->c_collectible) == 0)
 			exit(0);
 		game->mlx = mlx_init();
 		func_img(game);

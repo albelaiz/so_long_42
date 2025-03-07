@@ -1,6 +1,6 @@
 NAME = so_long
 CC = cc
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -fsanitize=address -g
 MLX_FLAGS = -L ./minilibx -lmlx -framework OpenGL -framework AppKit
 
 SRC = checker_map.c\

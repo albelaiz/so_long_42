@@ -6,7 +6,7 @@
 /*   By: albelaiz <albelaiz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/19 15:46:27 by albelaiz          #+#    #+#             */
-/*   Updated: 2025/03/05 15:48:48 by albelaiz         ###   ########.fr       */
+/*   Updated: 2025/03/07 00:39:15 by albelaiz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,44 +15,28 @@
 char	**duplicate_map(t_game *game)
 {
 	int		i;
+	int rows = 0;
 	char	**new_map;
 
 	i = 0;
-	new_map = (malloc(sizeof(char *) * game->n));
+	while (game->map[rows])
+		rows++;
+	new_map = (malloc(sizeof(char *) * (rows + 1)));
 	while (game->map[i])
 	{
 		new_map[i] = ft_strdup(game->map[i]);
+		if (!new_map[i])
+		{
+			while (i > 0)
+				free(new_map[--i]);
+			free(new_map);
+			return (NULL);
+		}
 		i++;
 	}
 	new_map[i] = NULL;
 	return (new_map);
 }
-
-// char **duplicate_map(t_game *game)
-// {
-// 	int i = 0;
-// 	char **new_map;
-
-// 	new_map = malloc(sizeof(char *) * (game->n + 1)); // إضافة
-		// +1 لضمان NULL في النهاية
-// 	if (!new_map)
-// 		return (NULL);
-// 	while (game->map[i])
-// 	{
-// 		new_map[i] = ft_strdup(game->map[i]);
-// 		if (!new_map[i]) // التحقق من نجاح النسخ
-// 		{
-// 			while (i > 0)
-// 				free(new_map[--i]); // تنظيف الذاكرة في حالة الفشل
-// 			free(new_map);
-// 			return (NULL);
-// 		}
-// 		i++;
-// 	}
-// 	new_map[i] = NULL;
-// 	return (new_map);
-// }
-
 int	flood_fill(char **map, int x, int y, int collectible)
 {
 	static int	door;
@@ -62,9 +46,9 @@ int	flood_fill(char **map, int x, int y, int collectible)
 	toul = 0;
 	while (map[toul])
 		toul++;
-	if (x < 0 || y < 0 || x > ft_strlen2(map[0]) - 1 || y > toul
-		|| map[y][x] == '1')
+	if (x < 0 || y < 0 || x > ft_strlen2(map[0]) - 1 || y > toul|| map[y][x] == '1')
 		return (0);
+		printf("ana hna\n");
 	if (map[y][x] == 'C')
 		collected++;
 	if (map[y][x] == 'E')
