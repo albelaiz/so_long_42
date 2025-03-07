@@ -6,7 +6,7 @@
 /*   By: albelaiz <albelaiz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 12:14:07 by albelaiz          #+#    #+#             */
-/*   Updated: 2025/03/07 01:55:19 by albelaiz         ###   ########.fr       */
+/*   Updated: 2025/03/07 02:13:54 by albelaiz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,7 @@ void		key_w(t_game **game);
 void		key_s(t_game **game);
 void		key_a(t_game **game);
 void		key_d(t_game **game);
+void		next_til_c(t_game **game, int new_x, int new_y);
 void		ptr_to_img(t_game *game);
 void		ft_link(t_game *game);
 void		read_map(t_game *game);
