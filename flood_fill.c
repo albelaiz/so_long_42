@@ -6,7 +6,7 @@
 /*   By: albelaiz <albelaiz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/19 15:46:27 by albelaiz          #+#    #+#             */
-/*   Updated: 2025/03/07 00:39:15 by albelaiz         ###   ########.fr       */
+/*   Updated: 2025/03/07 01:06:10 by albelaiz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,6 @@ int	flood_fill(char **map, int x, int y, int collectible)
 		toul++;
 	if (x < 0 || y < 0 || x > ft_strlen2(map[0]) - 1 || y > toul|| map[y][x] == '1')
 		return (0);
-		printf("ana hna\n");
 	if (map[y][x] == 'C')
 		collected++;
 	if (map[y][x] == 'E')
@@ -60,37 +59,3 @@ int	flood_fill(char **map, int x, int y, int collectible)
 			collectible) || flood_fill(map, x, y + 1, collectible)
 		|| flood_fill(map, x, y - 1, collectible));
 }
-// int flood_fill(char **map, int x, int y, int collectible)
-// {
-// 	static int door;
-// 	static int collected;
-// 	int toul = 0;
-// 	while (map[toul])
-// 		toul++;
-
-// 	// التحقق من الحدود والجدران
-// 	if (x < 0 || y < 0 || x >= ft_strlen1(map[0]) || y >= toul
-		// || map[y][x] == '1')
-// 		return (0);
-
-// 	// إذا وجدنا قطعة قابلة للتحصيل، نزيد العداد
-// 	if (map[y][x] == 'C')
-// 		collected++;
-
-// 	// إذا وجدنا الباب، نضبط قيمته إلى 1
-// 	if (map[y][x] == 'E')
-// 		door = 1;
-
-// 	// إذا تم جمع كل الـ Collectibles والباب موجود، نعود بقيمة النجاح
-// 	if (door && collected == collectible)
-// 		return (1);
-
-// 	// تعليم الخلية بأنها زارت لمنع التكرار
-// 	map[y][x] = '1';
-
-// 	// استدعاء الدالة على الاتجاهات الأربعة
-// 	return (flood_fill(map, x + 1, y, collectible) ||
-// 			flood_fill(map, x - 1, y, collectible) ||
-// 			flood_fill(map, x, y + 1, collectible) ||
-// 			flood_fill(map, x, y - 1, collectible));
-// }

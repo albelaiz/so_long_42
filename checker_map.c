@@ -6,7 +6,7 @@
 /*   By: albelaiz <albelaiz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 12:27:02 by albelaiz          #+#    #+#             */
-/*   Updated: 2025/03/06 15:00:05 by albelaiz         ###   ########.fr       */
+/*   Updated: 2025/03/07 01:53:29 by albelaiz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,8 +55,7 @@ int	checker_characters(t_game **game)
 			if ((*game)->map[i][j] == 'P')
 			{
 				k++;
-				(*game)->player_x = j;
-				(*game)->player_y = i;
+				position(*game, i, j);
 			}
 			else if (n == 0 && k > 1)
 				return (write(1, "Error: Invalid character\n", 25), 1);
@@ -65,6 +64,14 @@ int	checker_characters(t_game **game)
 		i++;
 	}
 	return(0);
+}
+void position(t_game *game, int i, int j)
+{
+	if (game->map[i][j] == 'P')
+	{
+		game->player_x = j;
+		game->player_y = i;
+	}
 }
 
 int	checker_all(char c, t_game **game)

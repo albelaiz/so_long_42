@@ -6,7 +6,7 @@
 /*   By: albelaiz <albelaiz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 12:14:07 by albelaiz          #+#    #+#             */
-/*   Updated: 2025/03/06 01:39:02 by albelaiz         ###   ########.fr       */
+/*   Updated: 2025/03/07 01:55:19 by albelaiz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,12 +44,15 @@ typedef struct s_game
 	int		c_exit;
 	int		player_x;
 	int		player_y;
-	int width;
-	int height;
+	int		width;
+	int		height;
 }			t_game;
 
 void		img(t_game *game);
+t_game		*ft_malloc(void);
+void		position(t_game *game, int i, int j);
 int			close_all(void *param);
+void		read_and_check(t_game *game);
 void		*ft_memset(void *ptr, int value, size_t num);
 void		func_img(t_game *game);
 int			ft_strlen2(char *str);

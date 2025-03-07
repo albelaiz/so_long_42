@@ -6,7 +6,7 @@
 /*   By: albelaiz <albelaiz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 12:29:34 by albelaiz          #+#    #+#             */
-/*   Updated: 2025/03/07 00:54:43 by albelaiz         ###   ########.fr       */
+/*   Updated: 2025/03/07 01:41:15 by albelaiz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,12 +31,29 @@ void func_img(t_game *game)
 {
 	game->width = (ft_strlen2(game->map[0]) - 1) * 64;
     game->height = (game->n + 1) * 64;
-	printf("width = %d\n", game->width);
-	printf("height = %d\n", game->height);
 	ptr_to_img(game);
 	img(game);
 	ft_link(game);
 }
+void read_and_check(t_game *game)
+{
+	read_map(game);
+	checker_map(game);
+}
+t_game *ft_malloc(void)
+{
+	t_game *game;
+
+	game = malloc(sizeof(t_game));
+	if (!game)
+	{
+		write(1, "Memory allocation failed\n", 24);
+		exit(1);
+	}
+	ft_memset(game, 0, sizeof(t_game));
+	return (game);
+}
+
 int	main(int argc, char **argv)
 {
 	char	**new_map;
@@ -44,12 +61,7 @@ int	main(int argc, char **argv)
 	
 	if (argc == 2)
 	{
-		game = malloc(sizeof(t_game));
-		if (!game)
-		{
-   			write(1, "Memory allocation failed\n", 24);
-			return (1);
-		}
+		game = ft_malloc();
 		ft_memset(game, 0, sizeof(t_game));
 		game->fd = open(argv[1], O_RDONLY);
 		if (game->fd < 0)
@@ -57,10 +69,8 @@ int	main(int argc, char **argv)
 			write(1, "error open file", 15);
 			return (1);
 		}
-		read_map(game);
-		checker_map(game);
+		read_and_check(game);
 		new_map = duplicate_map(game);
-		printf("x = %d y = %d\n", game->player_x, game->player_y);
 		if (flood_fill(new_map, game->player_x, game->player_y,game->c_collectible) == 0)
 			exit(0);
 		game->mlx = mlx_init();
