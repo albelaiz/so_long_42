@@ -6,7 +6,7 @@
 /*   By: albelaiz <albelaiz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 12:29:34 by albelaiz          #+#    #+#             */
-/*   Updated: 2025/03/07 01:41:15 by albelaiz         ###   ########.fr       */
+/*   Updated: 2025/03/08 00:13:31 by albelaiz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,12 +53,16 @@ t_game *ft_malloc(void)
 	ft_memset(game, 0, sizeof(t_game));
 	return (game);
 }
+// void ft_ft()
+// {
+// 	system("leaks so_long");
+// }
 
 int	main(int argc, char **argv)
 {
 	char	**new_map;
 	t_game	*game;
-	
+	// ft_ft();
 	if (argc == 2)
 	{
 		game = ft_malloc();
@@ -75,7 +79,7 @@ int	main(int argc, char **argv)
 			exit(0);
 		game->mlx = mlx_init();
 		func_img(game);
-		mlx_key_hook(game->mlx_win, key, &game);
+		mlx_hook(game->mlx_win,2,1L<<0,key, &game);
 		mlx_loop(game->mlx);
 	}
 }

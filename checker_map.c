@@ -6,7 +6,7 @@
 /*   By: albelaiz <albelaiz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 12:27:02 by albelaiz          #+#    #+#             */
-/*   Updated: 2025/03/07 01:53:29 by albelaiz         ###   ########.fr       */
+/*   Updated: 2025/03/08 01:10:19 by albelaiz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,8 +80,6 @@ int	checker_all(char c, t_game **game)
 	{
 		if (c == 'P')
 			(*game)->c_player++;
-		if ((*game)->c_player > 1)
-			return (0);
 		if (c == 'C')
 			(*game)->c_collectible++;
 		if (c == 'E')
