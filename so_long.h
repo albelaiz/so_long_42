@@ -6,7 +6,7 @@
 /*   By: albelaiz <albelaiz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 12:14:07 by albelaiz          #+#    #+#             */
-/*   Updated: 2025/03/08 00:09:52 by albelaiz         ###   ########.fr       */
+/*   Updated: 2025/03/08 23:37:34 by albelaiz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,11 +59,12 @@ void		ft_link(t_game *game);
 void		func_img(t_game *game);
 void		read_map(t_game *game);
 int			close_all(void *param);
+void		ft_free_dop(char **map);
 void		ptr_to_img(t_game *game);
 void		checker_map(t_game *game);
 int			checker_wall(t_game *game);
 int			key(int key, t_game **game);
-void		read_and_check(t_game *game);
+void		ft_free(t_game *game);
 char		**duplicate_map(t_game *game);
 int			checker_characters(t_game **game);
 int			checker_all(char c, t_game **game);

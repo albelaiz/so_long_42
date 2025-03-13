@@ -1,22 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   close_all.c                                        :+:      :+:    :+:   */
+/*   ft_free_dop.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: albelaiz <albelaiz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/05 23:11:18 by albelaiz          #+#    #+#             */
-/*   Updated: 2025/03/05 23:16:22 by albelaiz         ###   ########.fr       */
+/*   Created: 2025/03/08 21:46:05 by albelaiz          #+#    #+#             */
+/*   Updated: 2025/03/08 22:06:26 by albelaiz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int close_all(void *param)
+
+void ft_free_dop(char **map)
 {
-    t_game *game = (t_game *)param;
-    // Cleanup code here
-    mlx_destroy_window(game->mlx, game->mlx_win);
-    exit(0);
-    return (0);
+    int i = 0;
+
+    if (!map)
+        return;
+
+    while (map[i])
+    {
+        free(map[i]);
+        i++;
+    }
+    free(map);
 }

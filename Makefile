@@ -1,6 +1,6 @@
 NAME = so_long
 CC = cc
-CFLAGS = -Wall -Wextra -Werror -fsanitize=address -g
+CFLAGS = -Wall -Wextra -Werror
 MLX_FLAGS = -L ./minilibx -lmlx -framework OpenGL -framework AppKit
 
 SRC = checker_map.c\
@@ -22,7 +22,8 @@ SRC = checker_map.c\
       flood_fill.c\
       chekchek.c\
       ft_memset.c\
-      close_all.c\
+      ft_free.c\
+      ft_free_dop.c\
 
 OBJ = $(SRC:.c=.o)
 

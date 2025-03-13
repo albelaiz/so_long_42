@@ -6,7 +6,7 @@
 /*   By: albelaiz <albelaiz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 12:27:02 by albelaiz          #+#    #+#             */
-/*   Updated: 2025/03/08 01:10:19 by albelaiz         ###   ########.fr       */
+/*   Updated: 2025/03/13 17:48:19 by albelaiz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ int	checker_characters(t_game **game)
 	while ((*game)->map[i] != NULL)
 	{
 		j = 0;
-		while ((*game)->map[i][j] != '\0' && (*game)->map[i][j] != '\n')
+		while ((*game)->map[i][j++] != '\0' && (*game)->map[i][j] != '\n')
 		{
 			n = checker_all((*game)->map[i][j], game);
 			if ((*game)->map[i][j] == 'P')
@@ -59,7 +59,6 @@ int	checker_characters(t_game **game)
 			}
 			else if (n == 0 && k > 1)
 				return (write(1, "Error: Invalid character\n", 25), 1);
-			j++;
 		}
 		i++;
 	}
@@ -83,7 +82,14 @@ int	checker_all(char c, t_game **game)
 		if (c == 'C')
 			(*game)->c_collectible++;
 		if (c == 'E')
+		{
 			(*game)->c_exit++;
+			if ((*game)->c_exit > 1)
+			{
+				ft_free_dop((*game)->map);
+				exit(1);
+			}
+		}
 		return (1);
 	}
 	return (0);

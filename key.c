@@ -6,7 +6,7 @@
 /*   By: albelaiz <albelaiz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/08 13:24:33 by albelaiz          #+#    #+#             */
-/*   Updated: 2025/03/07 20:38:39 by albelaiz         ###   ########.fr       */
+/*   Updated: 2025/03/13 18:07:40 by albelaiz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ int	key(int key, t_game **game)
 		exit(0);
 	return (0);
 }
+
 void	move_player(t_game **game, int dx, int dy)
 {
 	int		new_x;
@@ -39,7 +40,7 @@ void	move_player(t_game **game, int dx, int dy)
 		return ;
 	else if (next_tile == 'E' && !(*game)->c_collectible)
 	{
-		mlx_destroy_window((*game)->mlx, (*game)->mlx_win);
+		ft_free_dop((*game)->map);
 		exit(0);
 	}
 	if (next_tile != 'E')
@@ -50,9 +51,9 @@ void	move_player(t_game **game, int dx, int dy)
 			(*game)->char_x + dx * 64, (*game)->char_y + dy * 64);
 		(*game)->char_x += dx * 64;
 		(*game)->char_y += dy * 64;
-if (next_tile == 'C')
-		next_til_c(game, new_x, new_y);
-}
+		if (next_tile == 'C')
+			next_til_c(game, new_x, new_y);
+	}
 }
 void	next_til_c(t_game **game, int new_x, int new_y)
 {
