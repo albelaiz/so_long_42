@@ -6,7 +6,7 @@
 /*   By: albelaiz <albelaiz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/19 15:46:27 by albelaiz          #+#    #+#             */
-/*   Updated: 2025/03/08 22:14:37 by albelaiz         ###   ########.fr       */
+/*   Updated: 2025/03/15 02:26:33 by albelaiz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,10 @@
 char	**duplicate_map(t_game *game)
 {
 	int		i;
-	int rows = 0;
+	int		rows;
 	char	**new_map;
 
+	rows = 0;
 	i = 0;
 	while (game->map[rows])
 		rows++;
@@ -37,6 +38,7 @@ char	**duplicate_map(t_game *game)
 	new_map[i] = NULL;
 	return (new_map);
 }
+
 int	flood_fill(char **map, int x, int y, int collectible)
 {
 	static int	door;
@@ -46,14 +48,18 @@ int	flood_fill(char **map, int x, int y, int collectible)
 	toul = 0;
 	while (map[toul])
 		toul++;
-	if (x < 0 || y < 0 || x > ft_strlen2(map[0]) - 1 || y > toul|| map[y][x] == '1')
+	if (map[y][x] == 'E')
+	{
+		map[y][x] = '1';
+		door = 1;
+	}
+	if (door && collected == collectible)
+		return (1);
+	if (x < 0 || y < 0 || x > ft_strlen2(map[0]) - 1 || y > toul
+		|| map[y][x] == '1')
 		return (0);
 	if (map[y][x] == 'C')
 		collected++;
-	if (map[y][x] == 'E')
-		door = 1;
-	if (door && collected == collectible)
-		return (1);
 	map[y][x] = '1';
 	return (flood_fill(map, x + 1, y, collectible) || flood_fill(map, x - 1, y,
 			collectible) || flood_fill(map, x, y + 1, collectible)

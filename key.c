@@ -6,7 +6,7 @@
 /*   By: albelaiz <albelaiz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/08 13:24:33 by albelaiz          #+#    #+#             */
-/*   Updated: 2025/03/13 18:07:40 by albelaiz         ###   ########.fr       */
+/*   Updated: 2025/03/14 17:13:39 by albelaiz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,13 @@
 int	key(int key, t_game **game)
 {
 	if (key == 13 || key == 126)
-		key_w(game);
+		move_player(game, 0, -1);
 	if (key == 1 || key == 125)
-		key_s(game);
+		move_player(game, 0, 1);
 	if (key == 0 || key == 123)
-		key_a(game);
+		move_player(game, -1, 0);
 	if (key == 2 || key == 124)
-		key_d(game);
+		move_player(game, 1, 0);
 	if (key == 53 || key == 17)
 		exit(0);
 	return (0);
@@ -39,10 +39,7 @@ void	move_player(t_game **game, int dx, int dy)
 	if (next_tile == '1')
 		return ;
 	else if (next_tile == 'E' && !(*game)->c_collectible)
-	{
-		ft_free_dop((*game)->map);
-		exit(0);
-	}
+		return (ft_free_dop((*game)->map), exit(0));
 	if (next_tile != 'E')
 	{
 		mlx_put_image_to_window((*game)->mlx, (*game)->mlx_win, (*game)->floor,
@@ -53,32 +50,6 @@ void	move_player(t_game **game, int dx, int dy)
 		(*game)->char_y += dy * 64;
 		if (next_tile == 'C')
 			next_til_c(game, new_x, new_y);
+		ft_printf("%d\n", (*game)->cont_move++);
 	}
-}
-void	next_til_c(t_game **game, int new_x, int new_y)
-{
-	(*game)->map[new_y][new_x] = '0';
-	if ((*game)->map[new_y][new_x] == '0')
-		mlx_put_image_to_window((*game)->mlx, (*game)->mlx_win, (*game)->floor,
-			new_x * 64, new_y * 64);
-	mlx_put_image_to_window((*game)->mlx, (*game)->mlx_win, (*game)->player,
-		(*game)->char_x, (*game)->char_y);
-	(*game)->c_collectible--;
-}
-
-void	key_w(t_game **game)
-{
-	move_player(game, 0, -1);
-}
-void	key_s(t_game **game)
-{
-	move_player(game, 0, 1);
-}
-void	key_a(t_game **game)
-{
-	move_player(game, -1, 0);
-}
-void	key_d(t_game **game)
-{
-	move_player(game, 1, 0);
 }

@@ -24,6 +24,7 @@ SRC = checker_map.c\
       ft_memset.c\
       ft_free.c\
       ft_free_dop.c\
+      next_til_c.c\
 
 OBJ = $(SRC:.c=.o)
 
@@ -39,3 +40,5 @@ fclean: clean
 	rm -f $(NAME) 
 
 re: fclean all
+
+mk: all clean

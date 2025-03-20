@@ -6,7 +6,7 @@
 /*   By: albelaiz <albelaiz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 12:44:38 by albelaiz          #+#    #+#             */
-/*   Updated: 2025/03/06 14:52:41 by albelaiz         ###   ########.fr       */
+/*   Updated: 2025/03/14 15:13:35 by albelaiz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,8 @@ void	img(t_game *game)
 		j = 0;
 		while (game->map[i][j] != '\0')
 		{
-			mlx_put_image_to_window(game->mlx, game->mlx_win, game->floor, x,y);
+			mlx_put_image_to_window(game->mlx, game->mlx_win, game->floor, x,
+				y);
 			x += 64;
 			j++;
 		}

@@ -6,7 +6,7 @@
 /*   By: albelaiz <albelaiz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/08 15:25:01 by albelaiz          #+#    #+#             */
-/*   Updated: 2025/03/13 18:00:34 by albelaiz         ###   ########.fr       */
+/*   Updated: 2025/03/14 15:14:38 by albelaiz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	ft_free(t_game *game)
 {
 	if (!game)
-		return;
+		return ;
 	if (game->floor)
 		mlx_destroy_image(game->mlx, game->floor);
 	if (game->wall)

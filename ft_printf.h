@@ -6,7 +6,7 @@
 /*   By: albelaiz <albelaiz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 12:30:52 by albelaiz          #+#    #+#             */
-/*   Updated: 2025/02/27 12:00:15 by albelaiz         ###   ########.fr       */
+/*   Updated: 2025/03/14 15:20:58 by albelaiz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include <stdarg.h>
 # include <unistd.h>
+
 int	ft_putnbr(int nb);
 int	ft_putchar(char c);
 int	ft_putstr(char *str);
