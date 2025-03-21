@@ -6,7 +6,7 @@
 /*   By: albelaiz <albelaiz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 12:28:33 by albelaiz          #+#    #+#             */
-/*   Updated: 2024/11/25 20:34:38 by albelaiz         ###   ########.fr       */
+/*   Updated: 2025/03/21 01:30:14 by albelaiz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,11 +44,11 @@ int	ft_printf(const char *forma, ...)
 {
 	int		i;
 	int		cont;
-	va_list	ptr;
+	va_list	list;
 
 	i = 0;
 	cont = 0;
-	va_start(ptr, forma);
+	va_start(list, forma);
 	if (!forma || write(1, 0, 0) == -1)
 		return (-1);
 	while (forma[i] != '\0')
@@ -56,12 +56,12 @@ int	ft_printf(const char *forma, ...)
 		if (forma[i] == '%' && forma[i + 1] != '\0')
 		{
 			i++;
-			cont += helper(forma[i], ptr);
+			cont += helper(forma[i], list);
 		}
 		else if (forma[i] != '%')
 			cont += ft_putchar(forma[i]);
 		i++;
 	}
-	va_end(ptr);
+	va_end(list);
 	return (cont);
 }

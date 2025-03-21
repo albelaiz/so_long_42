@@ -6,7 +6,7 @@
 /*   By: albelaiz <albelaiz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/27 17:31:17 by albelaiz          #+#    #+#             */
-/*   Updated: 2025/03/14 15:21:28 by albelaiz         ###   ########.fr       */
+/*   Updated: 2025/03/20 16:01:33 by albelaiz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,3 +24,4 @@ void	chekchek(t_game *game, char *line, int x, int y)
 		x++;
 	}
 }
+

@@ -6,7 +6,7 @@
 /*   By: albelaiz <albelaiz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 12:29:34 by albelaiz          #+#    #+#             */
-/*   Updated: 2025/03/19 23:36:16 by albelaiz         ###   ########.fr       */
+/*   Updated: 2025/03/21 15:30:30 by albelaiz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,18 +77,18 @@ int	close_win(t_game **game)
 	exit(0);
 }
 
-// void	ff(void)
-// {
-// 	system("leaks -q so_long");
-// }
+void	ff(void)
+{
+	system("leaks -q so_long");
+}
 
 int	main(int argc, char **argv)
 {
 	t_game	*game;
 
-	// atexit(ff);
 	if (argc == 2)
 	{
+	atexit(ff);
 		game = ft_malloc();
 		ft_memset(game, 0, sizeof(t_game));
 		game->fd = open(argv[1], O_RDONLY);

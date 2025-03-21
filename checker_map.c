@@ -1,12 +1,12 @@
 /* ************************************************************************** */
-/*                                                                            */
+/*						                                                     */
 /*                                                        :::      ::::::::   */
 /*   checker_map.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: albelaiz <albelaiz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 12:27:02 by albelaiz          #+#    #+#             */
-/*   Updated: 2025/03/20 01:56:13 by albelaiz         ###   ########.fr       */
+/*   Updated: 2025/03/21 01:26:31 by albelaiz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,10 +42,8 @@ int	checker_characters(t_game **game)
 	int	i;
 	int	j;
 	int	n;
-	int k;
 
 	i = 0;
-	k = 0;
 	while ((*game)->map[i] != NULL)
 	{
 		j = 0;
@@ -58,7 +56,7 @@ int	checker_characters(t_game **game)
 		}
 		i++;
 	}
-	return(0);
+	return (0);
 }
 
 void	position(t_game *game, int i, int j)
@@ -85,17 +83,42 @@ int	checker_all(char c, t_game **game)
 	return (0);
 }
 
+int	check_map_row_lengths(t_game *game)
+{
+	int	first_len;
+	int	i;
+	int	curr_len;
+
+	i = 0;
+	if (!game->map || !game->map[0])
+		return (ft_printf("Error: Map is empty\n"), 1);
+	first_len = ft_strlen2(game->map[0]);
+	if (game->map[0][first_len - 1] == '\n')
+		first_len--;
+	while (game->map[++i])
+	{
+		curr_len = ft_strlen2(game->map[i]);
+		if (game->map[i][curr_len - 1] == '\n')
+			curr_len--;
+		if (curr_len != first_len)
+			return (ft_printf("Error: Row %d has wrong length\n", i), exit(1),
+				1);
+	}
+	return (0);
+}
+
 void	checker_map(t_game *game)
 {
+	check_map_row_lengths(game);
 	if (game->n == ft_strlen2(game->map[0]))
 		ft_printf("Error: the map is not rectangular\n");
 	if (checker_characters(&game))
 		return (ft_free(game), exit(1));
 	if (checker_wall(game))
-		return (ft_printf("Error: Invalid wall1\n"), ft_free(game), exit(1));
-	if (game->c_exit != 1 || game->c_collectible < 1)
+		return (ft_printf("Error: Invalid wall\n"), ft_free(game), exit(1));
+	if (game->c_exit != 1 || game->c_collectible < 1 || game->c_player !=  1)
 	{
-		write(1,"error\ninvalid map\n",18);
+		write(1, "error\ninvalid map\n", 18);
 		ft_free_dop(game->map);
 		exit(1);
 	}
